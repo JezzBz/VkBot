@@ -1,4 +1,5 @@
-from ch_list1 import ch_pack
+# -*- coding: utf-8 -*-
+from ch_list1 import ch_pack,bunker
 from Rerandom import Rrom
 from time import time
 import vk_api.vk_api
@@ -8,24 +9,15 @@ import vk_api.vk_api
 class VkBot:
 
     def __init__(self, user_id,):
-        _COMMANDS = ['Команды',"Старт", "Багаж", "Здоровье"]
+
         print("Создан объект бота!")
         self._USER_ID = user_id
-        #self._USERNAME = self._get_user_name_from_vk_id(user_id)
 
-        self._COMMANDS = ['КОМАНДЫ',"СТАРТ", "БАГАЖ", "ЗДОРОВЬЕ"]
-    #def _get_user_name_from_vk_id(self, user_id):
-    #    request = requests.get("https://vk.com/id"+str(user_id))
-        #bs = bs4.BeautifulSoup(request.text, "html.parser")
 
-        #user_name = self._clean_all_tag_from_str(bs.findAll("title")[0])
+        self._COMMANDS = ["COMMANDS","CHAR", "LUGG", "HEAL","BUNK"]
+
     def send_msg(self, send_id, message,vk_api):
-        """
-        Отправка сообщения через метод messages.send
-        :param send_id: vk id пользователя, который получит сообщение
-        :param message: содержимое отправляемого письма
-        :return: None
-        """
+
         vk_api.messages.send(     peer_id=send_id,
                                   message=message,
                                   random_id=time())
@@ -44,11 +36,13 @@ class VkBot:
 
     # Здоровье
         elif message.upper() == self._COMMANDS[3]:
-            return Rrom('2')
 
+            return Rrom('2')
+        elif message.upper() == self._COMMANDS[4]:
+            return bunker()
     #Команды
         elif message.upper() == self._COMMANDS[0]:
-            return "Старт,Багаж,Здоровье"
+            return "Char-рандом персонажа \nCommands-список доступных команд \nHeal-рандом нового здоровья\nLugg-рандом нового багажа\nBunk-выбор бункера + катастрофы"
 
         else:
-            return "Напишите 'Команды'"
+            return "Напишите 'Commands'"

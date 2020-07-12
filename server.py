@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import vk_api.vk_api
 
 from vk_api.bot_longpoll import VkBotLongPoll
@@ -6,7 +7,7 @@ from vk_bot import  VkBot
 
 
 class Server:
-#api_token='f6c799dd26087993bdc4ae2b921f041271be1ce3c3b9e653901bde5d2e5d9999600f1b5b929a66a71c826'
+
 
     def __init__(self, api_token, group_id, server_name: str="Empty"):
 
@@ -28,8 +29,8 @@ class Server:
         for event in self.long_poll.listen():
             # Пришло новое сообщение
             if event.type == VkBotEventType.MESSAGE_NEW:
-                print('Text: ', event.object.message)
+                #print('Text: ', event.object.message)
 
                 bot = VkBot(event.from_user)
-                print(event.object.message['from_id'])
+                print(event.object.message['from_id'],':',event.object.message['text'])
                 bot.send_msg(send_id=event.object.message['from_id'], message=bot.new_message(event.object.message['text']),vk_api=self.vk_api)
