@@ -16,10 +16,11 @@ class VkBot:
 
         self._COMMANDS = ["COMMANDS","CHAR", "LUGG", "HEAL","BUNK"]
 
-    def send_msg(self, send_id, message,vk_api):
+    def send_msg(self, send_id, message,vk_api,keyboard):
 
         vk_api.messages.send(     peer_id=send_id,
                                   message=message,
+                                  keyboard=keyboard,
                                   random_id=time())
 
     def new_message(self,message):
@@ -46,3 +47,6 @@ class VkBot:
 
         else:
             return "Напишите 'Commands'"
+
+
+    
