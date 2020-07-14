@@ -9,8 +9,5 @@ server1 = Server(vk_api_token,195855572, "server1")
 # vk_api_token - API токен
 # 172998024 - id сообщества
 # "server1" - имя сервера
-try:
-    server1.start()
-except requests.exceptions.ReadTimeout:
-    print('Переподключение к серверам Вконтакте')
-    server1.start()
+
+server1.start()

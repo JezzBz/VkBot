@@ -5,14 +5,18 @@ def create_keyboard():
 
 
     keyboard.add_button("Commands", color=VkKeyboardColor.DEFAULT)
-    keyboard.add_button("Heal", color=VkKeyboardColor.DEFAULT)
+    keyboard.add_button("Health", color=VkKeyboardColor.DEFAULT)
 
     keyboard.add_line()
-    keyboard.add_button("Char", color=VkKeyboardColor.POSITIVE)
+    keyboard.add_button("Character", color=VkKeyboardColor.POSITIVE)
 
     keyboard.add_line()
-    keyboard.add_button("Bunk", color=VkKeyboardColor.PRIMARY)
-    keyboard.add_button("Lugg", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Bunker", color=VkKeyboardColor.PRIMARY)
+    keyboard.add_button("Luggage", color=VkKeyboardColor.PRIMARY)
 
     return keyboard.get_keyboard()
+def create_empty_keyboard():
+    keyboard = VkKeyboard.get_empty_keyboard()
+
+    return keyboard
 #Возвращает клавиатуру
