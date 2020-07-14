@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf8 -*-
 from ch_list1 import ch_pack,bunker
 from time import time
 from kboard import create_empty_keyboard

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf8 -*-
 import os
 from full_stak_start import Game_start
 class Gamesession:
@@ -36,8 +36,8 @@ class Gamesession:
                     Gamefile=open(self.filename,'a')
                     Gamefile.write('{0}-{1}-{2}'.format(self.peer_id,self.from_id,self.name)+'\n')
                     Gamefile.close()
-            print(count_players)
-            if count_players+1>=2:
+
+            if count_players+1>=6:
                 return False
             else:
                 return True
@@ -50,5 +50,9 @@ class Gamesession:
 
         return 'Игрок {0} в очереди , всего игроков {1} '.format(self.name,len(k))
     def fullstak(self):
-        return 'Команда собрана, игра запущена !'
         Game_start(self.vk_api,self.filename)
+        return 'Команда собрана, игра запущена !'
+
+    def dele(self):
+        os.remove(self.filename)
+        return('Игра окончена!')

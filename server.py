@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf8 -*-
 import vk_api.vk_api
 from kboard import create_keyboard,create_empty_keyboard
 from vk_api.bot_longpoll import VkBotLongPoll

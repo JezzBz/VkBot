@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf8 -*-
 from ch_list1 import ch_pack,bunker
 from Rerandom import Rrom
 from time import time
@@ -11,7 +11,7 @@ class VkBot:
 
     def __init__(self, user_id,):
 
-        print("Создан объект бота!")
+
         self._USER_ID = user_id
 
 
@@ -62,3 +62,5 @@ class VkBot:
                 return session.mess()
             else:
                 return session.mess()+"\n"+ session.fullstak()
+        elif text.upper()=='FINISH':
+            return session.dele()
