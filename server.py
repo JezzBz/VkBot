@@ -43,4 +43,6 @@ class Server:
                 elif event.object.message['from_id']!=event.object.message['peer_id']:
                     bot = VkBot(event.from_user)
                     keyboard=create_empty_keyboard()
-                    bot.send_msg(send_id=event.object.message['peer_id'], message=bot.chat_new_message(text=event.object.message['text'],peer_id=event.object.message['peer_id'],from_id=event.object.message['from_id']),keyboard=keyboard,vk_api=self.vk_api)
+                    user = self.vk.method("users.get", {"user_ids": event.object.message['from_id'] })
+                    name = user[0]['first_name']
+                    bot.send_msg(send_id=event.object.message['peer_id'], message=bot.chat_new_message(text=event.object.message['text'],peer_id=event.object.message['peer_id'],from_id=event.object.message['from_id'],name=name,vk_api=self.vk_api),keyboard=keyboard,vk_api=self.vk_api)

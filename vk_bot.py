@@ -48,11 +48,17 @@ class VkBot:
 
         else:
             return "Напишите 'Commands'"
-    def chat_new_message(self,text,peer_id,from_id):
+    def chat_new_message(self,text,peer_id,from_id,name,vk_api):
 
-        if text.upper()=='START':
-            #name= method("users.get", {"user_ids": from_id})
-            name='Bogdan'
-            session=Gamesession(filename=str(peer_id)+'.txt',peer_id=peer_id,from_id=from_id,name=name)
-            session.create()
-            return session.add()
+
+        session=Gamesession(filename=str(peer_id)+'.txt',peer_id=peer_id,from_id=from_id,name=name,vk_api=vk_api)
+        if text.upper()=='START' :
+
+            return session.create()
+
+        elif text=='+':
+            req=session.add()
+            if req:
+                return session.mess()
+            else:
+                return session.mess()+"\n"+ session.fullstak()
