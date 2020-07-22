@@ -12,6 +12,8 @@ class Gamesession:
     def create(self):
         if not self.players_c:
             self.players_c=6
+        if os.path.exists(self.filename):
+            return 'Игра начата!'
         Gamefile=open(self.filename,'w+')
         if os.stat(self.filename).st_size == 0:
             Gamefile.write('{3}\n{0}-{1}-{2}'.format(self.peer_id,self.from_id,self.name,self.players_c)+'\n')
