@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 import vk_api.vk_api
 from kboard import create_keyboard,create_empty_keyboard
 from vk_api.bot_longpoll import VkBotLongPoll
@@ -45,4 +45,8 @@ class Server:
                     keyboard=create_empty_keyboard()
                     user = self.vk.method("users.get", {"user_ids": event.object.message['from_id'] })
                     name = user[0]['first_name']
-                    bot.send_msg(send_id=event.object.message['peer_id'], message=bot.chat_new_message(text=event.object.message['text'],peer_id=event.object.message['peer_id'],from_id=event.object.message['from_id'],name=name,vk_api=self.vk_api),keyboard=keyboard,vk_api=self.vk_api)
+                    try:
+                        bot.send_msg(send_id=event.object.message['peer_id'], message=bot.chat_new_message(text=event.object.message['text'],peer_id=event.object.message['peer_id'],from_id=event.object.message['from_id'],name=name,vk_api=self.vk_api),keyboard=keyboard,vk_api=self.vk_api)
+                    except:
+                        pass
+                        

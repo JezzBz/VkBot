@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 # Импортируем созданный нами класс Server
 from server import Server
 # Получаем из config.py наш api-token

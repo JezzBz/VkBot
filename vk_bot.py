@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
 from ch_list1 import ch_pack,bunker
 from Rerandom import Rrom
 from time import time
@@ -49,18 +49,33 @@ class VkBot:
         else:
             return "Напишите 'Commands'"
     def chat_new_message(self,text,peer_id,from_id,name,vk_api):
+        players_c=0
+        if '-' in text:
+
+            mess_text=text.split('-')
+            if mess_text[0].upper()=='START' and mess_text[1].isdigit()  :
+                players_c=mess_text[1]
 
 
-        session=Gamesession(filename=str(peer_id)+'.txt',peer_id=peer_id,from_id=from_id,name=name,vk_api=vk_api)
-        if text.upper()=='START' :
+                text='START'
+            else:
+                pass
 
-            return session.create()
+
+        session=Gamesession(filename=str(peer_id)+'.txt',peer_id=peer_id,from_id=from_id,name=name,vk_api=vk_api,players_c=players_c)
+        if text.upper()=='START':
+
+                return session.create()
 
         elif text=='+':
             req=session.add()
-            if req:
+            print(req)
+            if req=="Next":
+
                 return session.mess()
-            else:
+            elif "Let's Start":
                 return session.mess()+"\n"+ session.fullstak()
+            else:
+                return 'Игра уже начата!'
         elif text.upper()=='FINISH':
             return session.dele()
